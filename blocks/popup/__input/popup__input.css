@@ -9,8 +9,11 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  padding: 13px 0 13px;
+  padding: 11.5px 0 11.5px;
   color: #000000;
+}
+.popup__input:last-child {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width:767px) {

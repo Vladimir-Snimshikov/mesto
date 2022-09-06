@@ -1,9 +1,8 @@
 .profile__info-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: start;
-  row-gap: 16px;
-  column-gap: 18px;
+display: flex;
+flex-direction: column;
+align-self: center;
+gap: 16px;
 }
 
 @media screen and (max-width:767px) {
@@ -11,5 +10,7 @@
     column-gap: 10px;
     row-gap: 14px;
     padding: 22px 0 36px;
+    max-width: calc(100% - 43px);
   }
 }
+

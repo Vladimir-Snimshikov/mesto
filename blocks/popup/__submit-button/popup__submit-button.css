@@ -2,7 +2,7 @@
   display: block;
   width: 358px;
   height: 50px;
-  margin: 0 auto;
+  margin: 48px auto 0;
   background: #000000;
   border-radius: 2px;
   color: #FFFFFF;
@@ -13,6 +13,7 @@
   line-height: 22px;
   text-align: center;
   box-sizing: border-box;
+  padding: 0;
 }
 
 .popup__submit-button:hover {
@@ -25,5 +26,7 @@
     font-size: 14px;
     line-height: 17px;
     width: 84.39%;
+    height: 46px;
+    margin-top: 45px;
   }
 }

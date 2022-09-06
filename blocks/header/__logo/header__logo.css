@@ -8,5 +8,7 @@
   .header__logo {
     margin-left: 8.43vw;
     margin-top: 28px;
+    width: 103px;
+    height: 24px;
   }
 }
