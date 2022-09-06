@@ -9,4 +9,4 @@
 
 HTML5, CSS, JS,
 БЭМ,
-* [Ссылка на проект]()
+* [Ссылка на проект](https://vladimir-snimshikov.github.io/mesto/)
