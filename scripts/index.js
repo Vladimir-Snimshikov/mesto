@@ -1,14 +1,14 @@
 const editButton = document.querySelector('.profile__edit-button');
 const exitButton = document.querySelector('.popup__exit-button');
 const overlay = document.querySelector('.popup');
-const nameInput = document.querySelector('[name="firstname"]');
-const professionInput = document.querySelector('[name="profession"]');
+const nameInput = document.querySelector('.popup__input_type_firstname');
+const professionInput = document.querySelector('.popup__input_type_profession');
 const formSubmit = document.querySelector('.popup__submit-button');
 const nameProfile = document.querySelector('.profile__name');
 const professionProfile = document.querySelector('.profile__profession');
 const formPopup = document.querySelector('.popup__container');
 
-const openPopup = () => {
+const togglePopup = () => {
   overlay.classList.toggle('popup_opened');
 }
 
@@ -20,11 +20,11 @@ const formSubmitHandler = (evt) => {
 }
 
 editButton.addEventListener('click', () => {
-  openPopup()
+  togglePopup()
 })
 
 exitButton.addEventListener('click', () => {
-  openPopup()
+  togglePopup()
   nameInput.value = nameProfile.textContent;
   professionInput.value = professionProfile.textContent;
 })

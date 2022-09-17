@@ -6,7 +6,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 0 0 30px;
+  margin: 0;
   align-self: end;
 }
 
@@ -20,6 +20,6 @@
 @media screen and (max-width:767px) {
   .profile__name {
     text-align: center;
-    margin: 0 0 0 17px;
+    margin: 0 0 0 43px;
   }
 }
