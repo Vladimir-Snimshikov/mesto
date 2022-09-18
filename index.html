@@ -29,52 +29,84 @@
     </section>
     <section class="places" aria-label="Секция с карточками">
       <ul class="cards">
-        <li class="cards__item">
+<!--         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/roza-hutor.jpg" alt="Вид с высоты на заснеженный Роза хутор">
           <h2 class="cards__title">Роза Хутор</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
         </li>
         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/olympic-park.jpg" alt="Вид Сочи-парка и олимпийского парка с высоты">
           <h2 class="cards__title">Олимпийский парк</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
         </li>
         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/krasnodar.jpg"
             alt="Вид с высоты на парк Галицкого в Краснодаре на фоне заката">
           <h2 class="cards__title">Краснодар</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
         </li>
         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/moscow.jpg" alt="вид с высоты на небосребы Москва-сити">
           <h2 class="cards__title">Москва</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
         </li>
         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/Sankt-petersburg.jpg" alt="фото моста в Саннкт-Петербурге вечером">
           <h2 class="cards__title">Санкт-Петербург</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
         </li>
         <li class="cards__item">
+          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
           <img class="cards__img" src="./images/sochi.jpg" alt="Вид с высоты на набережную моря в Сочи на фоне домов">
           <h2 class="cards__title">Сочи</h2>
           <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
+        </li> -->
       </ul>
     </section>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
   </main>
-  <div class="popup">
+  <div class="popup popup_type_edit-profile">
     <form class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="firstname" class="popup__input popup__input_type_firstname" value="Жак-Ив Кусто">
-      <input type="text" name="profession" class="popup__input popup__input_type_profession" value="Исследователь океана">
+      <input type="text" name="firstname" class="popup__input popup__input_type_firstname" placeholder="Жак-Ив Кусто">
+      <input type="text" name="profession" class="popup__input popup__input_type_profession" placeholder="Исследователь океана">
       <button type="submit" class="popup__submit-button" aria-label="сохранить изменения">Сохранить</button>
       <button type="button" class="popup__exit-button" aria-label="закрыть форму"></button>
     </form>
   </div>
+  <div class="popup popup_type_new-card">
+    <form class="popup__container">
+      <h2 class="popup__title">Новое место </h2>
+      <input type="text" name="firstname" class="popup__input popup__input_type_name-img" placeholder="Название">
+      <input type="text" name="profession" class="popup__input popup__input_type_img" placeholder="Ссылка на картинку">
+      <button type="submit" class="popup__submit-button" aria-label="создать место">Создать</button>
+      <button type="button" class="popup__exit-button" aria-label="закрыть форму создания места"></button>
+    </form>
+  </div>
+  <div class="popup popup_type_large-picture">
+    <figure class="large-picture">
+      <button type="button" class="popup__exit-button" aria-label="закрыть форму"></button>
+      <img class="large-picture__img" src="./images/roza-hutor.jpg">
+      <figcaption class="large-picture__signature">Карачаево-Черкессия</figcaption>
+    </figure>
+
+  </div>
+  <template class="blank-card">
+    <li class="cards__item">
+      <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
+      <img class="cards__img" src="./images/roza-hutor.jpg" alt="Вид с высоты на заснеженный Роза хутор">
+      <h2 class="cards__title">Роза Хутор</h2>
+      <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 

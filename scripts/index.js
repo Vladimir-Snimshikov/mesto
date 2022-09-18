@@ -29,4 +29,44 @@ exitButton.addEventListener('click', () => {
   professionInput.value = professionProfile.textContent;
 })
 
+
+
+
+
+
+
+
+
+
+
+/* function exitPopup (event) {
+  const curentPopup =  event.target.closest('.popup__container');
+  togglePopup(curentPopup);
+ }
+
+
+
+
+ editButton.addEventListener('click', exitPopup)
+
+exitButton.addEventListener('click', () => {
+  exitPopup();
+  nameInput.value = nameProfile.textContent;
+  professionInput.value = professionProfile.textContent;
+}) */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 formPopup.addEventListener('submit', formSubmitHandler)
