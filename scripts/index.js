@@ -1,5 +1,5 @@
 const editButton = document.querySelector('.profile__edit-button');  //кнопка редак-ия профиля
-const exitButton = document.querySelectorAll('.popup__exit-button'); //кнопкИ закрытия попапов
+const exitButtons = document.querySelectorAll('.popup__exit-button'); //кнопкИ закрытия попапов
 const overlayEditProfile = document.querySelector('.popup_type_edit-profile'); //Оверлей для редактирования
 const overlayNewCard = document.querySelector('.popup_type_new-card'); //Оверлей для доб карточки
 const overlayLargeImg = document.querySelector('.popup_type_large-picture'); //Оверлей для увеличения картинки
@@ -12,7 +12,7 @@ const professionProfile = document.querySelector('.profile__profession'); // П�
 const formEdit = document.forms.editForm; // форма для редактирования профиля
 const formAdd = document.forms.addForm;  // форма для добавления карточки
 const blankCard = document.querySelector('.blank-card'); //болванка для карточек
-const Cards = document.querySelector('.cards'); // ul  карточек
+const cards = document.querySelector('.cards'); // ul  карточек
 const buttonAddCard = document.querySelector('.profile__add-button'); // кнопка добавления карточки
 const imgOverlay = document.querySelector('.large-picture__img'); //Картинка при оверлее с увеличенной картинкой
 const imgSignature = document.querySelector('.large-picture__signature')   //подпись картинки при оверлее с увеличенной картинкой
@@ -46,7 +46,7 @@ const initialCard = [
 ];
 
 
-function renderItem (item) {
+function createCard (item) {
   const newCard = blankCard.content.cloneNode(true); //копируем болванку
   const cardImage = newCard.querySelector('.cards__img'); // находим картинку у карточки
   const cardsTitle = newCard.querySelector('.cards__title');// находим текст у карточки
@@ -63,11 +63,15 @@ function renderItem (item) {
     imgOverlay.alt = evt.target.alt;
     imgSignature.textContent = cardsTitle.textContent;
   })
-
-  Cards.prepend(newCard);
+ return newCard;
 }
 
-initialCard.forEach(renderItem) //вызываем функции для создания карточке на странице (данные берем из массива)
+renderItem = (item) => {
+  const newCard = createCard(item);
+  cards.prepend(newCard)
+}
+
+initialCard.forEach(item => {renderItem(item)}) //вызываем функции для создания карточке на странице (данные берем из массива)
 
 
 const openPopup = (popupName) => {  //функция открытия попапа
@@ -75,6 +79,8 @@ const openPopup = (popupName) => {  //функция открытия попап
 }
 
 editButton.addEventListener('click', () => { //вешаем слушатель для вызова открытия попапа(нужного) по клику
+  nameInput.value = nameProfile.textContent;
+  professionInput.value = professionProfile.textContent;
   openPopup(overlayEditProfile);
 });
 
@@ -87,7 +93,7 @@ const closePopup = (popupExitButton) => {  //функция для закрыт�
   PopupClose.classList.remove('popup_opened')
 }
 
-exitButton.forEach(button => {button.addEventListener('click', closePopup)}) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
+exitButtons.forEach(button => {button.addEventListener('click', closePopup)}) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
 
 
 const editFormSubmitHandler = (evt) => {  //функция отправки формы при редактировании профиля
@@ -109,8 +115,5 @@ const addFormSubmitHandler = (evt) => { //функция отправки фор
   evt.target.reset();
 }
 
-
 formEdit.addEventListener('submit', editFormSubmitHandler);
 formAdd.addEventListener('submit', addFormSubmitHandler);
-
-
