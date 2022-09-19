@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,43 +28,6 @@
     </section>
     <section class="places" aria-label="Секция с карточками">
       <ul class="cards">
-<!--         <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/roza-hutor.jpg" alt="Вид с высоты на заснеженный Роза хутор">
-          <h2 class="cards__title">Роза Хутор</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
-        <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/olympic-park.jpg" alt="Вид Сочи-парка и олимпийского парка с высоты">
-          <h2 class="cards__title">Олимпийский парк</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
-        <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/krasnodar.jpg"
-            alt="Вид с высоты на парк Галицкого в Краснодаре на фоне заката">
-          <h2 class="cards__title">Краснодар</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
-        <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/moscow.jpg" alt="вид с высоты на небосребы Москва-сити">
-          <h2 class="cards__title">Москва</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
-        <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/Sankt-petersburg.jpg" alt="фото моста в Саннкт-Петербурге вечером">
-          <h2 class="cards__title">Санкт-Петербург</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li>
-        <li class="cards__item">
-          <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-          <img class="cards__img" src="./images/sochi.jpg" alt="Вид с высоты на набережную моря в Сочи на фоне домов">
-          <h2 class="cards__title">Сочи</h2>
-          <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
-        </li> -->
       </ul>
     </section>
     <footer class="footer">
@@ -73,7 +35,7 @@
     </footer>
   </main>
   <div class="popup popup_type_edit-profile">
-    <form class="popup__container">
+    <form class="popup__container" name="editForm">
       <h2 class="popup__title">Редактировать профиль</h2>
       <input type="text" name="firstname" class="popup__input popup__input_type_firstname" placeholder="Жак-Ив Кусто">
       <input type="text" name="profession" class="popup__input popup__input_type_profession" placeholder="Исследователь океана">
@@ -82,12 +44,12 @@
     </form>
   </div>
   <div class="popup popup_type_new-card">
-    <form class="popup__container">
+    <form class="popup__container" name="addForm">
       <h2 class="popup__title">Новое место </h2>
-      <input type="text" name="firstname" class="popup__input popup__input_type_name-img" placeholder="Название">
-      <input type="text" name="profession" class="popup__input popup__input_type_img" placeholder="Ссылка на картинку">
-      <button type="submit" class="popup__submit-button" aria-label="создать место">Создать</button>
-      <button type="button" class="popup__exit-button" aria-label="закрыть форму создания места"></button>
+      <input type="text" name="imgName" class="popup__input popup__input_type_name-img" placeholder="Название" required>
+      <input type="url" name="link" class="popup__input popup__input_type_img" placeholder="Ссылка на картинку" required>
+      <button type="submit" class="popup__submit-button" aria-label="создать карточку">Создать</button>
+      <button type="button" class="popup__exit-button" aria-label="закрыть форму создания карточки"></button>
     </form>
   </div>
   <div class="popup popup_type_large-picture">
@@ -100,14 +62,12 @@
   </div>
   <template class="blank-card">
     <li class="cards__item">
-      <button type="button" class="card__delete-button" aria-label="удалить картинку"></button>
-      <img class="cards__img" src="./images/roza-hutor.jpg" alt="Вид с высоты на заснеженный Роза хутор">
-      <h2 class="cards__title">Роза Хутор</h2>
+      <button type="button" class="cards__delete-button" aria-label="удалить картинку"></button>
+      <img class="cards__img" src="" alt="">
+      <h2 class="cards__title"></h2>
       <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
     </li>
   </template>
-
   <script src="./scripts/index.js"></script>
 </body>
-
 </html>
