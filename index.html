@@ -37,8 +37,10 @@
   <div class="popup popup_type_edit-profile">
     <form class="popup__container" name="editForm">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="firstname" class="popup__input popup__input_type_firstname" placeholder="Жак-Ив Кусто">
-      <input type="text" name="profession" class="popup__input popup__input_type_profession" placeholder="Исследователь океана">
+      <input type="text" name="firstname" class="popup__input popup__input_type_firstname" placeholder="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+      <span></span>
+      <input type="text" name="profession" class="popup__input popup__input_type_profession" placeholder="Исследователь океана" minlength="2" maxlength="200" required>
+      <span></span>
       <button type="submit" class="popup__submit-button" aria-label="сохранить изменения">Сохранить</button>
       <button type="button" class="popup__exit-button" aria-label="закрыть форму"></button>
     </form>
@@ -46,8 +48,10 @@
   <div class="popup popup_type_new-card">
     <form class="popup__container" name="addForm">
       <h2 class="popup__title">Новое место </h2>
-      <input type="text" name="imgName" class="popup__input popup__input_type_name-img" placeholder="Название" required>
+      <input type="text" name="imgName" class="popup__input popup__input_type_name-img" placeholder="Название" minlength="2" maxlength="30" required>
+      <span></span>
       <input type="url" name="link" class="popup__input popup__input_type_img" placeholder="Ссылка на картинку" required>
+      <span></span>
       <button type="submit" class="popup__submit-button popup__submit-button_disabled"  aria-label="создать карточку">Создать</button>
       <button type="button" class="popup__exit-button" aria-label="закрыть форму создания карточки"></button>
     </form>
