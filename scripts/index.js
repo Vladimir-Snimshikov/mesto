@@ -58,7 +58,9 @@ function createCard (item) {
   buttonDelete.addEventListener('click', () => {buttonDelete.closest('.cards__item').remove()}); //вешаем слушатель на корзину для удаления карточки
   buttonLike.addEventListener('click', () => buttonLike.classList.toggle('cards__like-img_active')) //вешаем слушатель для лайк для закрашивания
   cardImage.addEventListener('click', (evt) => { //вешаем слушатель на картики для открытия оверлея с увеличенной картинкой
-    openPopup(overlayLargeImg)
+    openPopup(overlayLargeImg);
+    document.addEventListener('keydown', exitPopupByEscape);
+    document.addEventListener('click', exitPopupByClick);
     imgOverlay.src = evt.target.src; //
     imgOverlay.alt = evt.target.alt;
     imgSignature.textContent = cardsTitle.textContent;
@@ -82,15 +84,41 @@ editButton.addEventListener('click', () => { //вешаем слушатель �
   nameInput.value = nameProfile.textContent;
   professionInput.value = professionProfile.textContent;
   openPopup(overlayEditProfile);
+  document.addEventListener('keydown', exitPopupByEscape);
+  document.addEventListener('click', exitPopupByClick);
 });
 
 buttonAddCard.addEventListener('click', () => { //вешаем слушатель для вызова открытия попапа(нужного) по клику
   openPopup(overlayNewCard);
+
+  document.addEventListener('keydown', exitPopupByEscape);
+  document.addEventListener('click', exitPopupByClick);
 });
+
+function exitPopupByClick  (evt) {
+    if (evt.target.classList.contains('popup_opened')){
+    evt.target.classList.remove('popup_opened');
+    removeListeners ()
+  }
+}
+
+function exitPopupByEscape (evt) {
+  const curentPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    curentPopup.classList.remove('popup_opened');
+    removeListeners ();
+  }
+}
+
+function removeListeners () {
+  document.removeEventListener('keydown', exitPopupByEscape);
+  document.removeEventListener('click', exitPopupByClick);
+}
 
 const closePopup = (popupExitButton) => {  //функция для закрытия попапа
   const PopupClose = popupExitButton.target.closest('.popup');
-  PopupClose.classList.remove('popup_opened')
+  PopupClose.classList.remove('popup_opened');
+  removeListeners ();
 }
 
 exitButtons.forEach(button => {button.addEventListener('click', closePopup)}) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
