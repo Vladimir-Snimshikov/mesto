@@ -3,8 +3,8 @@ const formSelectors = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
   inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  inputErrorClass: 'popup__input-span',
+  errorClass: 'popup__input-span_type_error'
 }
 
 
