@@ -1,5 +1,3 @@
-
-
 export class FormValidator {
   constructor(settings, form) {
 
@@ -57,7 +55,7 @@ export class FormValidator {
   _toggleButtonState() {
 
     if (this._hasInvalidInput()) {
-      this._inactivateSubmit();
+      this.inactivateSubmit();
     } else {
       this._activateSubmit();
     }
@@ -65,10 +63,10 @@ export class FormValidator {
 
   _activateSubmit() {
     this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
-    this._buttonElement.removeAttribute('disabled', true); //
+    this._buttonElement.removeAttribute('disabled'); //
   }
 
-  _inactivateSubmit() {
+  inactivateSubmit() {
     this._buttonElement.classList.add(this._settings.inactiveButtonClass);
     this._buttonElement.setAttribute('disabled', true); //
   }

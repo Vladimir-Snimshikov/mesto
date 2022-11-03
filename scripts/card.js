@@ -8,13 +8,13 @@ export class Card {
 
   }
 
-  getCardElement () {
+  getCardElement() {
 
     //создаем копию темплейта и находим ее елементы
     this._cardElement = this._templateSelector
-    .content
-    .querySelector('.cards__item')
-    .cloneNode(true);
+      .content
+      .querySelector('.cards__item')
+      .cloneNode(true);
 
     this._cardImage = this._cardElement.querySelector('.cards__img');
     this._cardTitle = this._cardElement.querySelector('.cards__title');
@@ -35,6 +35,7 @@ export class Card {
   _handleDeleteCard = () => {
 
     this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _handleLikeCard = () => {
@@ -42,10 +43,10 @@ export class Card {
     this._buttonLike.classList.toggle('cards__like-img_active');
   }
 
-  _setEventListeners () {
+  _setEventListeners() {
     this._buttonDelete.addEventListener('click', this._handleDeleteCard);
     this._buttonLike.addEventListener('click', this._handleLikeCard);
-    this._cardImage.addEventListener('click',() => this._handleCardClick(this._name, this._link));
+    this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
   }
 
 }

@@ -1,6 +1,6 @@
-import {FormValidator} from './FormValidator.js';
-import {Card} from './card.js';
-import {initialCard} from './initialCard.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
+import { initialCard } from './initialCard.js';
 
 const buttonEdit = document.querySelector('.profile__edit-button');  //кнопка редак-ия профиля
 const buttonsExit = document.querySelectorAll('.popup__exit-button'); //кнопкИ закрытия попапов
@@ -31,27 +31,27 @@ const formSelectors = {
 }
 
 
-const editFormValidator = new FormValidator(formSelectors, formEdit);
-editFormValidator.enableValidation();
+const formEditProfileValidator = new FormValidator(formSelectors, formEdit);
+formEditProfileValidator.enableValidation();
 
-const addFormValidator = new FormValidator(formSelectors, formAdd);
-addFormValidator.enableValidation();
+const formAddCardValidator = new FormValidator(formSelectors, formAdd);
+formAddCardValidator.enableValidation();
 
 const handleCardClick = (name, link) => {
-  openPopup(overlayLargeImg);
 
   imgOverlay.src = link; //
   imgOverlay.alt = name;
   imgSignature.textContent = name;
-}
 
+  openPopup(overlayLargeImg);
+}
 
 function renderItem(data) {
   const newCard = new Card(data, blankCard, handleCardClick);
   const cardElement = newCard.getCardElement();
-  cards.prepend(cardElement)
-}
 
+  return cardElement;
+}
 
 function openPopup(popupName) {  //функция открытия попапа
   popupName.classList.add('popup_opened');
@@ -84,8 +84,8 @@ function exitByEscape(evt) {
   }
 }
 
- //функция отправки формы при редактировании профиля
-function editFormSubmitHandler(evt) {
+//функция отправки формы при редактировании профиля
+function handleEditFormSubmit(evt) {
 
   nameProfile.textContent = nameInput.value;
   professionProfile.textContent = professionInput.value;
@@ -93,17 +93,18 @@ function editFormSubmitHandler(evt) {
   evt.target.reset();
 }
 
-function addFormSubmitHandler(evt) { //функция отправки формы при добавлениии карточки
+function handleAddFormSubmit(evt) { //функция отправки формы при добавлениии карточки
 
   const newCard = {
     name: inputNameCard.value,
     link: inputImgCard.value
   }
-  renderItem(newCard);
-  const curentPopup = document.querySelector('.popup_opened')
-  closePopup(curentPopup);
+
+  cards.prepend(renderItem(newCard));
+
+  closePopup(overlayNewCard);
   evt.target.reset();
-  addFormValidator._inactivateSubmit();
+  formAddCardValidator.inactivateSubmit();
 }
 
 
@@ -126,9 +127,10 @@ buttonsExit.forEach((button) => {
 }) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
 
 
-initialCard.forEach(item => { renderItem(item) });
+initialCard.forEach((item) => {
+  cards.prepend(renderItem(item));
+ });
 
-formEdit.addEventListener('submit', editFormSubmitHandler);
+formEdit.addEventListener('submit', handleEditFormSubmit);
 
-formAdd.addEventListener('submit', addFormSubmitHandler);
-
+formAdd.addEventListener('submit', handleAddFormSubmit);
