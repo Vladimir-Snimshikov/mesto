@@ -76,5 +76,4 @@ export class FormValidator {
       return !inputElement.validity.valid;
     })
   };
-
 }
