@@ -1,5 +1,9 @@
-const editButton = document.querySelector('.profile__edit-button');  //кнопка редак-ия профиля
-const exitButtons = document.querySelectorAll('.popup__exit-button'); //кнопкИ закрытия попапов
+import {FormValidator} from './FormValidator.js';
+import {Card} from './card.js';
+import {initialCard} from './initialCard.js';
+
+const buttonEdit = document.querySelector('.profile__edit-button');  //кнопка редак-ия профиля
+const buttonsExit = document.querySelectorAll('.popup__exit-button'); //кнопкИ закрытия попапов
 const overlayEditProfile = document.querySelector('.popup_type_edit-profile'); //Оверлей для редактирования
 const overlayNewCard = document.querySelector('.popup_type_new-card'); //Оверлей для доб карточки
 const overlayLargeImg = document.querySelector('.popup_type_large-picture'); //Оверлей для увеличения картинки
@@ -17,131 +21,114 @@ const buttonAddCard = document.querySelector('.profile__add-button'); // кно�
 const imgOverlay = document.querySelector('.large-picture__img'); //Картинка при оверлее с увеличенной картинкой
 const imgSignature = document.querySelector('.large-picture__signature')   //подпись картинки при оверлее с увеличенной картинкой
 
+const formSelectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input-span',
+  errorClass: 'popup__input-span_type_error'
+}
 
-const initialCard = [
-  {
-    "name": "Роза Хутор",
-    "link": "./images/roza-hutor.jpg"
-  },
-  {
-    "name": "Олимпийский парк",
-    "link": "./images/olympic-park.jpg"
-  },
-  {
-    "name": "Краснодар",
-    "link": "./images/krasnodar.jpg"
-  },
-  {
-    "name": "Москва",
-    "link": "./images/moscow.jpg"
-  },
-  {
-    "name": "Санкт-Петербург",
-    "link": "./images/Sankt-petersburg.jpg"
-  },
-  {
-    "name": "Сочи",
-    "link": "./images/sochi.jpg"
+
+const editFormValidator = new FormValidator(formSelectors, formEdit);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(formSelectors, formAdd);
+addFormValidator.enableValidation();
+
+const handleCardClick = (name, link) => {
+  openPopup(overlayLargeImg);
+
+  imgOverlay.src = link; //
+  imgOverlay.alt = name;
+  imgSignature.textContent = name;
+}
+
+
+function renderItem(data) {
+  const newCard = new Card(data, blankCard, handleCardClick);
+  const cardElement = newCard.getCardElement();
+  cards.prepend(cardElement)
+}
+
+
+function openPopup(popupName) {  //функция открытия попапа
+  popupName.classList.add('popup_opened');
+
+  document.addEventListener('click', closePopupByClick);
+  document.addEventListener('keydown', exitByEscape);
+}
+
+function closePopup(popupName) {  //функция для закрытия попапа
+
+  popupName.classList.remove('popup_opened');
+
+  document.removeEventListener('click', closePopupByClick);
+  document.removeEventListener('keydown', exitByEscape);
+
+}
+
+function closePopupByClick(evt) {
+
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  };
+};
+
+//функция закрытия по кнопке ест.Находит текущий открытый попап и закрывает его при нажатии на esc
+function exitByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const curentPopup = document.querySelector('.popup_opened');
+    closePopup(curentPopup);
   }
-];
-
-
-function createCard (item) {
-  const newCard = blankCard.content.cloneNode(true); //копируем болванку
-  const cardImage = newCard.querySelector('.cards__img'); // находим картинку у карточки
-  const cardsTitle = newCard.querySelector('.cards__title');// находим текст у карточки
-  const buttonDelete = newCard.querySelector('.cards__delete-button'); // находим кнопку удаления у карточки
-  const buttonLike = newCard.querySelector('.cards__like-img'); //находис кнопку лайка у карточки
-  cardImage.src = item.link; //копируем адрес картинки из массива в картинку у карточки
-  cardImage.alt = item.name; //копируем название картинки из массива и вставляем в аллт новой картинки
-  cardsTitle.textContent = item.name; //берем имя картинки из массива и подписываем картику в новой карточке
-  buttonDelete.addEventListener('click', () => {buttonDelete.closest('.cards__item').remove()}); //вешаем слушатель на корзину для удаления карточки
-  buttonLike.addEventListener('click', () => buttonLike.classList.toggle('cards__like-img_active')) //вешаем слушатель для лайк для закрашивания
-  cardImage.addEventListener('click', (evt) => { //вешаем слушатель на картики для открытия оверлея с увеличенной картинкой
-    openPopup(overlayLargeImg);
-    document.addEventListener('keydown', exitPopupByEscape);
-    document.addEventListener('click', exitPopupByClick);
-    imgOverlay.src = evt.target.src; //
-    imgOverlay.alt = evt.target.alt;
-    imgSignature.textContent = cardsTitle.textContent;
-  })
- return newCard;
 }
 
-renderItem = (item) => {
-  const newCard = createCard(item);
-  cards.prepend(newCard)
+ //функция отправки формы при редактировании профиля
+function editFormSubmitHandler(evt) {
+
+  nameProfile.textContent = nameInput.value;
+  professionProfile.textContent = professionInput.value;
+  closePopup(overlayEditProfile);
+  evt.target.reset();
 }
 
-initialCard.forEach(item => {renderItem(item)}) //вызываем функции для создания карточке на странице (данные берем из массива)
+function addFormSubmitHandler(evt) { //функция отправки формы при добавлениии карточки
 
-
-const openPopup = (popupName) => {  //функция открытия попапа
-  popupName.classList.add('popup_opened')
+  const newCard = {
+    name: inputNameCard.value,
+    link: inputImgCard.value
+  }
+  renderItem(newCard);
+  const curentPopup = document.querySelector('.popup_opened')
+  closePopup(curentPopup);
+  evt.target.reset();
+  addFormValidator._inactivateSubmit();
 }
 
-editButton.addEventListener('click', () => { //вешаем слушатель для вызова открытия попапа(нужного) по клику
+
+buttonEdit.addEventListener('click', () => { //вешаем слушатель для вызова открытия попапа(нужного) по клику
   nameInput.value = nameProfile.textContent;
   professionInput.value = professionProfile.textContent;
   openPopup(overlayEditProfile);
-  document.addEventListener('keydown', exitPopupByEscape);
-  document.addEventListener('click', exitPopupByClick);
 });
 
 buttonAddCard.addEventListener('click', () => { //вешаем слушатель для вызова открытия попапа(нужного) по клику
   openPopup(overlayNewCard);
-
-  document.addEventListener('keydown', exitPopupByEscape);
-  document.addEventListener('click', exitPopupByClick);
 });
 
-function exitPopupByClick  (evt) {
-    if (evt.target.classList.contains('popup_opened')){
-    evt.target.classList.remove('popup_opened');
-    removeListeners ()
-  }
-}
+buttonsExit.forEach((button) => {
 
-function exitPopupByEscape (evt) {
-  const curentPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    curentPopup.classList.remove('popup_opened');
-    removeListeners ();
-  }
-}
-
-function removeListeners () {
-  document.removeEventListener('keydown', exitPopupByEscape);
-  document.removeEventListener('click', exitPopupByClick);
-}
-
-const closePopup = (popupExitButton) => {  //функция для закрытия попапа
-  const PopupClose = popupExitButton.target.closest('.popup');
-  PopupClose.classList.remove('popup_opened');
-  removeListeners ();
-}
-
-exitButtons.forEach(button => {button.addEventListener('click', closePopup)}) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
+  button.addEventListener('click', (evt) => {
+    const curentPopup = evt.target.closest('.popup');
+    closePopup(curentPopup)
+  })
+}) //навешиваем слушатели на все кнопки(крестики) и передаем функцию закрытия попапа по клику
 
 
-const editFormSubmitHandler = (evt) => {  //функция отправки формы при редактировании профиля
-  evt.preventDefault();
-  nameProfile.textContent = nameInput.value;
-  professionProfile.textContent = professionInput.value;
-  closePopup(evt);
-  evt.target.reset();
-}
-
-const addFormSubmitHandler = (evt) => { //функция отправки формы при добавлениии карточки
-  evt.preventDefault();
- const newCard = {
-  name: inputNameCard.value,
-  link: inputImgCard.value
- }
- renderItem(newCard);
-  closePopup(evt);
-  evt.target.reset();
-}
+initialCard.forEach(item => { renderItem(item) });
 
 formEdit.addEventListener('submit', editFormSubmitHandler);
+
 formAdd.addEventListener('submit', addFormSubmitHandler);
+
