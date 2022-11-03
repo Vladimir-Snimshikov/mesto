@@ -13,4 +13,5 @@
 - HTML;
 - CSS;
 - JAVASCRIPT.
+- OOP.
 
