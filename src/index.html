@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Владимир Снимщиков">
   <title>mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./src/pages/index.css">
 </head>
 
 <body class="root">
   <header class="header">
-    <img class="header__logo" src="./images/header-logo.svg" alt="логотип Mesto">
+    <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="логотип Mesto">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__conteiner">
-        <img class="profile__img" src="./images/kusto.png" alt="фото Жак-Ива Кусто">
+        <img class="profile__img" src="<%=require('./images/kusto.png')%>" alt="фото Жак-Ива Кусто">
         <div class="profile__info-container">
           <div class="profile__name-container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -48,7 +48,7 @@
   <div class="popup popup_type_new-card">
     <form class="popup__container popup__form" name="addForm" novalidate>
       <h2 class="popup__title">Новое место </h2>
-      <input id="imgName-input" type="text" name="imgName" class="popup__input popup__input_type_name-img" placeholder="Название" minlength="2" maxlength="30" required>
+      <input id="imgName-input" type="text" name="name" class="popup__input popup__input_type_name-img" placeholder="Название" minlength="2" maxlength="30" required>
       <span class="imgName-input-error popup__input-span popup__input-span_type_error"></span>
       <input id="url-input" type="url" name="link" class="popup__input popup__input_type_img" placeholder="Ссылка на картинку" required>
       <span class="url-input-error popup__input-span popup__input-span_type_error"></span>
@@ -59,7 +59,7 @@
   <div class="popup popup_type_large-picture">
     <figure class="large-picture">
       <button type="button" class="popup__exit-button" aria-label="закрыть форму"></button>
-      <img class="large-picture__img" src="./images/roza-hutor.jpg">
+      <img class="large-picture__img" src="#">
       <figcaption class="large-picture__signature">Роза Хутор</figcaption>
     </figure>
 
@@ -67,11 +67,11 @@
   <template class="blank-card">
     <li class="cards__item">
       <button type="button" class="cards__delete-button" aria-label="удалить картинку"></button>
-      <img class="cards__img" src="./images/roza-hutor.jpg" alt="Роза Хутор">
+      <img class="cards__img" src="#" alt="Роза Хутор">
       <h2 class="cards__title"></h2>
       <button type="button" class="cards__like-img" aria-label="поставить лайк"></button>
     </li>
   </template>
-  <script type="module" src="./scripts/index.js" defer></script>
+  <script type="module" src="./src/pages/index.js" defer></script>
 </body>
 </html>
