@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(settings, form) {
 
     this._form = form;
@@ -51,6 +51,13 @@ export class FormValidator {
     errorElement.classList.remove(this._settings.errorClass);
     errorElement.textContent = '';
   };
+
+  hideErrors() {
+    this._inputList.forEach(input => {
+      this._hideInputError(input);
+
+    })
+  }
 
   _toggleButtonState() {
 
