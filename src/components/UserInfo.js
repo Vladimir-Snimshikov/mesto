@@ -11,8 +11,7 @@ export default class UserInfo {
   }
 
   setUserInfo(formValues) {
-    console.log(formValues);
-    console.log(this._userNameElement.textContent)
+
     this._userNameElement.textContent = formValues.firstname;
     this._userProfessionElement.textContent = formValues.profession
   }
