@@ -1,4 +1,4 @@
-
+import './index.css';
 import { initialCard,
     buttonAddCard, formSelectors,
     formEdit, formAdd,
