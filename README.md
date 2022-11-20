@@ -14,4 +14,6 @@
 - CSS;
 - JAVASCRIPT.
 - OOP.
+- Валидация форм.
+- Webpack.
 
