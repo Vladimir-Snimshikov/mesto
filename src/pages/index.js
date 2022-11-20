@@ -74,6 +74,7 @@ const popupEditProfile = new PopupWithForm ({
   });
 
   buttonEditProfile.addEventListener('click', () =>{
+    popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
     formEditProfileValidator.hideErrors()
   });
