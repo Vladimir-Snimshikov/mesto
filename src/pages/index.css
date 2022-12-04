@@ -4,6 +4,7 @@
 @import url(../blocks/cards/__img/cards__img.css);
 @import url(../blocks/cards/__item/cards__item.css);
 @import url(../blocks/cards/__like-img/cards__like-img.css);
+@import url(../blocks/cards/__likes-counter/cards__likes-counter.css);
 @import url(../blocks/cards/__like-img/__like-img_active/cards__like-img_active.css);
 @import url(../blocks/cards/__title/cards__title.css);
 @import url(../blocks/cards/__delete-button/cards__delete-button.css);
@@ -36,4 +37,5 @@
 @import url(../blocks/large-picture/__img/large-picture__img.css);
 @import url(../blocks/large-picture/__signature/large-picture__signature.css);
 @import url(../blocks/popup/__input-span/popup__input-span.css);
-@import url(../blocks/popup/__input-span/_type/popup__input-span_type_error.css)
+@import url(../blocks/popup/__input-span/_type/popup__input-span_type_error.css);
+
