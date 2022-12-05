@@ -47,11 +47,13 @@ cardList.renderItems();
 
 const userInfo = new UserInfo({
   userNameSelector: '.profile__name',
-  userProfessionSelector: '.profile__profession'});
+  userProfessionSelector: '.profile__profession',
+  userAvatarSelector:'.profile__img'});
 
 const popupEditProfile = new PopupWithForm ({
   popupSelector: '.popup_type_edit-profile',
   handleFormSubmit: (formValues) => {
+    console.log(formValues);
 
     userInfo.setUserInfo(formValues);
   }});
