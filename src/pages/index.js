@@ -123,7 +123,7 @@ const popupEditProfile = new PopupWithForm ({
 
     const api = new Api(config);
 
-    api.getUserInfo()
+    api.getAllCards()
     .then((res) => {
       console.log(res)
     })

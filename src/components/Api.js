@@ -16,5 +16,10 @@ export default class Api {
       .then(this._responseProcessing)
   }
 
+  getAllCards() {
+    return fetch(`${this._url}cards`, { headers: this._headers })
+    .then(this._responseProcessing)
+  }
+
 }
 
