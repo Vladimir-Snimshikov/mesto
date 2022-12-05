@@ -51,7 +51,7 @@
     </form>
   </div>
   <div class="popup popup_type_new-card">
-    <form class="popup_ _container popup__form" name="addForm" novalidate>
+    <form class="popup__container popup__form" name="addForm" novalidate>
       <h2 class="popup__title">Новое место </h2>
       <input id="imgName-input" type="text" name="name" class="popup__input popup__input_type_name-img"
         placeholder="Название" minlength="2" maxlength="30" required>
@@ -71,6 +71,17 @@
         aria-label="закрыть форму подтверждения удаления карточки"></button>
     </form>
   </div>
+  <div class="popup popup_type_avatar-update">
+    <form class="popup__container popup__form" name="avatarUpdateForm" novalidate>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <input id="url-avatar-input" type="url" name="avatarLink" class="popup__input popup__input_type_avatar-update"
+        placeholder="Ссылка на картинку" required>
+      <span class="url-avatar-input-error popup__input-span popup__input-span_type_error"></span>
+      <button type="submit" class="popup__submit-button" aria-label="обновить аватар">Сохранить</button>
+      <button type="button" class="popup__exit-button" aria-label="закрыть форму обновления аватара"></button>
+    </form>
+  </div>
+
   <div class="popup popup_type_large-picture">
     <figure class="large-picture">
       <button type="button" class="popup__exit-button" aria-label="закрыть форму"></button>
@@ -91,3 +102,4 @@
 </body>
 
 </html>
+

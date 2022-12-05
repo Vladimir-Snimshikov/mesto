@@ -2,7 +2,8 @@ import './index.css';
 import { initialCard,
     buttonAddCard, formSelectors,
     formEdit, formAdd,
-    blankCard, buttonEditProfile}
+    blankCard, buttonEditProfile,
+    buttonUpdateProfile}
     from '../utils/constants.js';
 
 import Card from '../components/Card.js';
@@ -78,4 +79,18 @@ const popupEditProfile = new PopupWithForm ({
     popupEditProfile.open();
     formEditProfileValidator.hideErrors()
   });
+
+
+  const popupUpdateAvatar = new PopupWithForm ({
+    popupSelector: '.popup_type_avatar-update',
+    handleFormSubmit: (formValues) => {
+
+      console.log(formValues);
+    }});
+
+    buttonUpdateProfile.addEventListener('click', () => {
+      popupUpdateAvatar.setEventListeners()
+      popupUpdateAvatar.open()
+
+    })
 
