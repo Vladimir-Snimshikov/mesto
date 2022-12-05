@@ -31,6 +31,14 @@ export const formSelectors = {
   errorClass: 'popup__input-span_type_error'
 }
 
+export const config = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-54/",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "b9863cd1-287b-423d-99c8-b51e7726ff28",
+  },
+};
+
 const olimpPark = new URL("../images/olympic-park.jpg", import.meta.url);
 const rozaHutor = new URL("../images/roza-hutor.jpg", import.meta.url);
 const krasnodar = new URL("../images/krasnodar.jpg", import.meta.url);

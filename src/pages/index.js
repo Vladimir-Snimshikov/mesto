@@ -3,7 +3,7 @@ import { initialCard,
     buttonAddCard, formSelectors,
     formEdit, formAdd,
     blankCard, buttonEditProfile,
-    buttonUpdateProfile}
+    buttonUpdateProfile, config}
     from '../utils/constants.js';
 
 import Card from '../components/Card.js';
@@ -24,6 +24,7 @@ formAddCardValidator.enableValidation();
 const popupLargeImage = new PopupWithImage('.popup_type_large-picture');
 popupLargeImage.setEventListeners();
 
+const api = new Api(config);
 
 function createCard(data) {
   const newCard = new Card({data, templateSelector:blankCard,
@@ -100,35 +101,3 @@ const popupEditProfile = new PopupWithForm ({
 
 
 
-
-/*
-    const config = {
-      url: "https://mesto.nomoreparties.co/v1/cohort-54",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "b9863cd1-287b-423d-99c8-b51e7726ff28",
-      },
-    }; */
-
-
-    const config = {
-      url: "https://mesto.nomoreparties.co/v1/cohort-54/",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "b9863cd1-287b-423d-99c8-b51e7726ff28",
-      },
-    };
-
-
-
-    const api = new Api(config);
-
-const bla = {
-  link:'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  name:'sdad'
-}
-
-api.addCard(bla)
-.then((res)=> {
-  console.log(res)
-})

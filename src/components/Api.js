@@ -8,7 +8,7 @@ export default class Api {
     if (res.ok) {
       return res.json()
     }
-    return Promise.reject({ message: "Ошибка на стороне сервера", res })
+    return Promise.reject(`Ошибка: ${res.status}`)
   }
 
   getUserInfo() {
@@ -43,5 +43,27 @@ export default class Api {
     }).then(this._responseProcessing)
   }
 
+  deleteCard(cardId) {
+    return fetch(`${this._url}cards/${cardId}`,{
+      method:"DELETE",
+      headers: this._headers
+    }).then(this._responseProcessing)
+  }
+
+  putAvatar(data) {
+    return fetch(`${this._url}users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar:data.avatar
+      })
+    }).then(this._responseProcessing)
+  }
+  toggleLike(cardId, isLiked) {
+    return fetch(`${this._url}cards/${cardId}/likes`, {
+      method:  isLiked ? "DELETE" : "PUT",
+      headers: this._headers
+    }).then(this._responseProcessing)
+  }
 }
 
