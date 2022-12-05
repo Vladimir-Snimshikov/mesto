@@ -11,7 +11,8 @@ import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
-import UserInfo from '../components/UserInfo.js'
+import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js'
 
 
 const formEditProfileValidator = new FormValidator(formSelectors, formEdit);
@@ -69,6 +70,7 @@ const popupEditProfile = new PopupWithForm ({
   });
 
 
+
   popupAddCard.setEventListeners();
 
   buttonAddCard.addEventListener('click', () =>{
@@ -95,4 +97,35 @@ const popupEditProfile = new PopupWithForm ({
       popupUpdateAvatar.open()
 
     })
+
+
+
+
+/*
+    const config = {
+      url: "https://mesto.nomoreparties.co/v1/cohort-54",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "b9863cd1-287b-423d-99c8-b51e7726ff28",
+      },
+    }; */
+
+
+    const config = {
+      url: "https://mesto.nomoreparties.co/v1/cohort-54/",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "b9863cd1-287b-423d-99c8-b51e7726ff28",
+      },
+    };
+
+
+
+    const api = new Api(config);
+
+    api.getUserInfo()
+    .then((res) => {
+      console.log(res)
+    })
+
 
