@@ -21,5 +21,27 @@ export default class Api {
     .then(this._responseProcessing)
   }
 
+  editProfile(data) {
+    return fetch(`${this._url}users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name:data.firstname,
+        about:data.profession
+      })
+    }).then(this._responseProcessing)
+  }
+
+  addCard(data) {
+    return fetch(`${this._url}cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name:data.name,
+        link:data.link
+      })
+    }).then(this._responseProcessing)
+  }
+
 }
 

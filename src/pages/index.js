@@ -123,9 +123,12 @@ const popupEditProfile = new PopupWithForm ({
 
     const api = new Api(config);
 
-    api.getAllCards()
-    .then((res) => {
-      console.log(res)
-    })
+const bla = {
+  link:'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+  name:'sdad'
+}
 
-
+api.addCard(bla)
+.then((res)=> {
+  console.log(res)
+})
