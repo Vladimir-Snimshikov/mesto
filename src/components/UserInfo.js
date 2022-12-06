@@ -13,7 +13,16 @@ export default class UserInfo {
 
   setUserInfo(formValues) {
 
-    this._userNameElement.textContent = formValues.firstname;
-    this._userProfessionElement.textContent = formValues.profession
+    this._userNameElement.textContent = formValues.name;
+    this._userProfessionElement.textContent = formValues.about
+  }
+
+  setAvatarInfo(data) {
+    this._userAvatarElement.src = data.avatar;
+    this._id = data.id;
+  }
+
+  getId() {
+    return this._id;
   }
 }

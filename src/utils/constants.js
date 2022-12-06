@@ -1,5 +1,5 @@
 export const buttonEditProfile = document.querySelector('.profile__edit-button');  //кнопка редак-ия профиля
-export const buttonUpdateProfile = document.querySelector('.profile__avatar-button');  //кнопка редак-ия профиля
+export const buttonUpdateProfile = document.querySelector('.profile__avatar-button');  //кнопка редак-ия аватара
 export const overlayEditProfile = document.querySelector('.popup_type_edit-profile'); //Оверлей для редактирования
 export const overlayNewCard = document.querySelector('.popup_type_new-card'); //Оверлей для доб карточки
 export const overlayLargeImg = document.querySelector('.popup_type_large-picture'); //Оверлей для увеличения картинки

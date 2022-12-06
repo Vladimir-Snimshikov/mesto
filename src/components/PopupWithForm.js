@@ -8,6 +8,10 @@ export default class PopupWithForm extends Popup {
     this._form = this._popup.querySelector('.popup__form');
   }
 
+  getSubButonElement() {
+    return this._form.querySelector('.popup__submit-button')
+  }
+
   _getInputValues() {
     this._formValues = {};
 
@@ -42,6 +46,10 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._form.reset();
 
+  }
+
+  blabla() {
+    return this._getInputValues()
   }
 
 }
