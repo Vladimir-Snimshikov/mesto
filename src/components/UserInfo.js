@@ -5,10 +5,13 @@ export default class UserInfo {
     this._userAvatarElement = document.querySelector(userAvatarSelector);
   }
   getUserInfo() {
-    return {
-      firstname: this._userNameElement.textContent,
-      profession: this._userProfessionElement.textContent
-    }
+    this._userInfo = {};
+
+    this._userInfo.firstname = this._userNameElement.textContent;
+    this._userInfo.profession = this._userProfessionElement.textContent;
+
+    return this._userInfo
+
   }
 
   setUserInfo(formValues) {
@@ -19,10 +22,11 @@ export default class UserInfo {
 
   setAvatarInfo(data) {
     this._userAvatarElement.src = data.avatar;
-    this._id = data.id;
+    this._id = data._id;
   }
 
   getId() {
+
     return this._id;
   }
 }

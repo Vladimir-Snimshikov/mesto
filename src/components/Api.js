@@ -51,7 +51,6 @@ export default class Api {
   }
 
   putAvatar(data) {
-    console.log(data)
     return fetch(`${this._url}users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
@@ -60,6 +59,7 @@ export default class Api {
       })
     }).then(this._responseProcessing)
   }
+
   toggleLike(cardId, isLiked) {
     return fetch(`${this._url}cards/${cardId}/likes`, {
       method:  isLiked ? "DELETE" : "PUT",
