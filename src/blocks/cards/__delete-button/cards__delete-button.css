@@ -8,12 +8,18 @@
   background-image: url(../../../images/delete-but.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   border: none;
   background-color: transparent;
+  display: none;
+  outline: none;
 }
 
 .cards__delete-button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.cards__delete-button_active {
+  display: block;
 }
