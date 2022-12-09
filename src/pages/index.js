@@ -2,7 +2,8 @@
   import {
     buttonAddCard, formSelectors,
     formEdit, formAdd, buttonEditProfile,
-    buttonUpdateProfile, config, formAvatarUpdate
+    buttonUpdateProfile, config, formAvatarUpdate,
+    buttonSubmitFormAvatar, buttonSubmitFormAdd, buttonSubmitFormEdit
   }
     from '../utils/constants.js';
 
@@ -15,6 +16,7 @@
   import UserInfo from '../components/UserInfo.js';
   import Api from '../components/Api.js'
   import { data } from 'autoprefixer';
+
 
 
   const formEditProfileValidator = new FormValidator(formSelectors, formEdit);
@@ -64,7 +66,7 @@
     api
       .deleteCard(card.getId())
       .then(function () {
-        card.remove();
+        card.delete();
         deletePopup.close();
       })
       .catch((err) => {
@@ -105,7 +107,7 @@ function handleClickLike (card) {
   const editAvatar = new PopupWithForm({
     popupSelector: '.popup_type_avatar-update',
     handleFormSubmit: (inputValues) => {
-      editAvatar.getSubButonElement().textContent = "Сохранение...";
+      buttonSubmitFormAvatar.textContent = "Сохранение...";
 
       api
         .putAvatar(inputValues)
@@ -117,7 +119,7 @@ function handleClickLike (card) {
           console.log(err)
         })
         .finally(() => {
-          editAvatar.getSubButonElement().textContent = "Сохранить";
+          buttonSubmitFormAvatar.textContent = "Сохранить";
         })
     }
   })
@@ -127,7 +129,7 @@ function handleClickLike (card) {
   const popupEditProfile = new PopupWithForm({
     popupSelector: '.popup_type_edit-profile',
     handleFormSubmit: (formValues) => {
-      popupEditProfile.getSubButonElement().textContent = "Сохранение...";
+      buttonSubmitFormEdit.textContent = "Сохранение...";
       api
         .editProfile(formValues)
         .then((data) => {
@@ -138,7 +140,7 @@ function handleClickLike (card) {
           console.log(err)
         })
         .finally(() => {
-          popupEditProfile.getSubButonElement().textContent = "Сохранить";
+          buttonSubmitFormEdit.textContent = "Сохранить";
         })
 
     }
@@ -149,16 +151,17 @@ function handleClickLike (card) {
   const popupAddCard = new PopupWithForm({
     popupSelector: '.popup_type_new-card',
     handleFormSubmit: (data) => {
-      popupAddCard.getSubButonElement().textContent = "Сохранение...";
+      buttonSubmitFormAdd.textContent = "Сохранение...";
       api.addCard(data)
         .then((data) => {
           cardList.addItem(createCard(data));
+          popupAddCard.close()
         })
         .catch((err) => {
           console.log(err)
         })
         .finally(() => {
-          popupAddCard.getSubButonElement().textContent = "Сохранить";
+          buttonSubmitFormAdd.textContent = "Создать";
         })
     }
   });

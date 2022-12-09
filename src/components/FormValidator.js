@@ -10,12 +10,7 @@ export default class FormValidator {
 
   enableValidation() {
 
-    this._form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    })
-
     this._setEventListeners();
-
   };
 
   _setEventListeners() {
@@ -24,13 +19,13 @@ export default class FormValidator {
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._CheckInputValidity(inputElement);
+        this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
     });
   };
 
-  _CheckInputValidity(inputItem) {
+  _checkInputValidity(inputItem) {
     if (!inputItem.validity.valid) {
       this._showInputError(inputItem, inputItem.validationMessage);
     } else {
