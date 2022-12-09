@@ -16,6 +16,11 @@ export const formAdd = document.forms.addForm;  // форма для добав�
 export const formAvatarUpdate = document.forms.avatarUpdateForm; // форма для редактирования профиля
 export const formConfirmation = document.forms.confirmation;  // форма для добавления карточки
 
+export const buttonSubmitFormAvatar = formAvatarUpdate.querySelector('.popup__submit-button');
+export const buttonSubmitFormAdd = formAdd.querySelector('.popup__submit-button');
+export const buttonSubmitFormEdit = formEdit.querySelector('.popup__submit-button');
+
+
 export const blankCard = document.querySelector('.blank-card'); //болванка для карточек
 export const cards = document.querySelector('.cards'); // ul  карточек
 export const buttonAddCard = document.querySelector('.profile__add-button'); // кнопка добавления карточки

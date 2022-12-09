@@ -5,12 +5,12 @@ export default class UserInfo {
     this._userAvatarElement = document.querySelector(userAvatarSelector);
   }
   getUserInfo() {
-    this._userInfo = {};
+    const userInfo = {};
 
-    this._userInfo.firstname = this._userNameElement.textContent;
-    this._userInfo.profession = this._userProfessionElement.textContent;
+    userInfo.firstname = this._userNameElement.textContent;
+    userInfo.profession = this._userProfessionElement.textContent;
 
-    return this._userInfo
+    return userInfo
 
   }
 
