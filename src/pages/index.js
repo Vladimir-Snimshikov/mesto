@@ -2,8 +2,7 @@
   import {
     buttonAddCard, formSelectors,
     formEdit, formAdd, buttonEditProfile,
-    buttonUpdateProfile, config, formAvatarUpdate,
-    buttonSubmitFormAvatar, buttonSubmitFormAdd, buttonSubmitFormEdit
+    buttonUpdateProfile, config, formAvatarUpdate
   }
     from '../utils/constants.js';
 
@@ -107,7 +106,7 @@ function handleClickLike (card) {
   const editAvatar = new PopupWithForm({
     popupSelector: '.popup_type_avatar-update',
     handleFormSubmit: (inputValues) => {
-      buttonSubmitFormAvatar.textContent = "Сохранение...";
+      editAvatar.showLoading(true);
 
       api
         .putAvatar(inputValues)
@@ -119,17 +118,17 @@ function handleClickLike (card) {
           console.log(err)
         })
         .finally(() => {
-          buttonSubmitFormAvatar.textContent = "Сохранить";
+          editAvatar.showLoading(false);
         })
     }
-  })
+  }, 'Сохранить')
   editAvatar.setEventListeners()
 
 
   const popupEditProfile = new PopupWithForm({
     popupSelector: '.popup_type_edit-profile',
     handleFormSubmit: (formValues) => {
-      buttonSubmitFormEdit.textContent = "Сохранение...";
+      popupEditProfile.showLoading(true);
       api
         .editProfile(formValues)
         .then((data) => {
@@ -140,18 +139,18 @@ function handleClickLike (card) {
           console.log(err)
         })
         .finally(() => {
-          buttonSubmitFormEdit.textContent = "Сохранить";
+          popupEditProfile.showLoading(false);
         })
 
     }
-  });
+  }, 'Сохранить');
   popupEditProfile.setEventListeners();
 
 
   const popupAddCard = new PopupWithForm({
     popupSelector: '.popup_type_new-card',
     handleFormSubmit: (data) => {
-      buttonSubmitFormAdd.textContent = "Сохранение...";
+      popupAddCard.showLoading(true);
       api.addCard(data)
         .then((data) => {
           cardList.addItem(createCard(data));
@@ -161,10 +160,10 @@ function handleClickLike (card) {
           console.log(err)
         })
         .finally(() => {
-          buttonSubmitFormAdd.textContent = "Создать";
+          popupAddCard.showLoading(false)
         })
     }
-  });
+  }, "Создать");
   popupAddCard.setEventListeners();
 
 
@@ -177,8 +176,6 @@ function handleClickLike (card) {
     popupEditProfile.open();
     formEditProfileValidator.hideErrors()
   });
-
-
 
   buttonUpdateProfile.addEventListener('click', () => {
 
